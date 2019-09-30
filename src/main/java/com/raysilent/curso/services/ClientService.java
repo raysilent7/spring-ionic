@@ -21,7 +21,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Multipart;
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +37,8 @@ public class ClientService {
     private AddressRepository addRepo;
     @Autowired
     private BCryptPasswordEncoder pe;
+    @Autowired
+    private S3Service s3Service;
 
     public Client find(Integer id) {
         UserSS user = UserService.authenticated();
@@ -115,6 +120,10 @@ public class ClientService {
     public Page<Client> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.fromString(direction), orderBy);
         return repo.findAll(pageRequest);
+    }
+
+    public URI uploadProfilePicture (MultipartFile multipartFile) {
+        return s3Service.uploadFile(multipartFile);
     }
 
     private void updateData(Client newObj, Client obj) {
