@@ -1,7 +1,11 @@
 package com.raysilent.curso.resources.exception;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.raysilent.curso.services.exception.AuthorizationException;
 import com.raysilent.curso.services.exception.DataIntegrityException;
+import com.raysilent.curso.services.exception.FileException;
 import com.raysilent.curso.services.exception.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +33,39 @@ public class ResourceExceptionHandler {
         StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.FORBIDDEN.value(),
                 "Access Denied" ,e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
+    }
+
+    @ExceptionHandler(FileException.class)
+    public ResponseEntity<StandardError> file(FileException e, HttpServletRequest request) {
+
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+                "Access Denied" ,e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
+    @ExceptionHandler(AmazonClientException.class)
+    public ResponseEntity<StandardError> amazonClient(AmazonClientException e, HttpServletRequest request) {
+
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+                "Access Denied" ,e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
+    @ExceptionHandler(AmazonS3Exception.class)
+    public ResponseEntity<StandardError> amazonS3(AmazonS3Exception e, HttpServletRequest request) {
+
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+                "Access Denied" ,e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
+    @ExceptionHandler(AmazonServiceException.class)
+    public ResponseEntity<StandardError> amazonService(AmazonServiceException e, HttpServletRequest request) {
+
+        HttpStatus code = HttpStatus.valueOf(e.getErrorCode());
+        StandardError err = new StandardError(System.currentTimeMillis(), code.value(),
+                "Access Denied" ,e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(code).body(err);
     }
 
     @ExceptionHandler(DataIntegrityException.class)
