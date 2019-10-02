@@ -14,6 +14,7 @@ import com.raysilent.curso.services.exception.AuthorizationException;
 import com.raysilent.curso.services.exception.DataIntegrityException;
 import com.raysilent.curso.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.mail.Multipart;
+import java.awt.image.BufferedImage;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +40,11 @@ public class ClientService {
     private BCryptPasswordEncoder pe;
     @Autowired
     private S3Service s3Service;
+    @Autowired
+    private ImageService imageService;
+
+    @Value("${img.prefix.client.profile}")
+    private String prefix;
 
     public Client find(Integer id) {
         UserSS user = UserService.authenticated();
@@ -128,14 +134,9 @@ public class ClientService {
             throw new AuthorizationException("Access denied.");
         }
 
-        URI uri = s3Service.uploadFile(multipartFile);
-        Optional<Client> obj = repo.findById(user.getId());
-        Client cli = obj.orElseThrow(() -> new ObjectNotFoundException(
-                "Objeto não encontrado! Id: " + user.getId() + ", Tipo: " + Client.class.getName()));
-        cli.setImgURL(uri.toString());
-        repo.save(cli);
-
-        return uri;
+        BufferedImage img = imageService.getJpgImageFromFile(multipartFile);
+        String fileName = prefix+user.getId()+".jpg";
+        return s3Service.uploadFile(imageService.getInputStream(img, "jpg"), fileName, "image");
     }
 
     private void updateData(Client newObj, Client obj) {
