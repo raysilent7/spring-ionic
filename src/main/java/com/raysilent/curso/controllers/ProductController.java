@@ -1,4 +1,4 @@
-package com.raysilent.curso.resources;
+package com.raysilent.curso.controllers;
 
 import com.raysilent.curso.domain.Product;
 import com.raysilent.curso.domain.dto.ProductDTO;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/products")
-public class ProductResources {
+public class ProductController {
 
     @Autowired
     private ProductService service;

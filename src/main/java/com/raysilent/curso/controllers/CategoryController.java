@@ -1,4 +1,4 @@
-package com.raysilent.curso.resources;
+package com.raysilent.curso.controllers;
 
 import com.raysilent.curso.domain.Category;
 import com.raysilent.curso.domain.dto.CategoryDTO;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/categories")
-public class CategoryResources {
+public class CategoryController {
 
     @Autowired
     private CategoryService service;

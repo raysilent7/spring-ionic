@@ -1,4 +1,4 @@
-package com.raysilent.curso.resources;
+package com.raysilent.curso.controllers;
 
 import com.raysilent.curso.domain.Client;
 import com.raysilent.curso.domain.dto.ClientDTO;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/clients")
-public class ClientResources {
+public class ClientController {
 
     @Autowired
     private ClientService service;

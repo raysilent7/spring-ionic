@@ -1,4 +1,4 @@
-package com.raysilent.curso.resources;
+package com.raysilent.curso.controllers;
 
 import com.raysilent.curso.domain.Request;
 import com.raysilent.curso.services.RequestService;
@@ -12,7 +12,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value="/requests")
-public class RequestResources {
+public class RequestController {
 
     @Autowired
     private RequestService service;

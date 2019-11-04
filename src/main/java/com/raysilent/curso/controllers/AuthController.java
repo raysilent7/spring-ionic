@@ -1,4 +1,4 @@
-package com.raysilent.curso.resources;
+package com.raysilent.curso.controllers;
 
 import com.raysilent.curso.domain.dto.EmailDTO;
 import com.raysilent.curso.security.JWTUtil;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value="/auth")
-public class AuthResources {
+public class AuthController {
 
     @Autowired
     private JWTUtil jwtUtil;
