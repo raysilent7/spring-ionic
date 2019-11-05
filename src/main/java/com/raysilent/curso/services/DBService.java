@@ -58,44 +58,44 @@ public class DBService {
         Product p10 = new Product(null, "Mesa de centro", 180.00);
         Product p11 = new Product(null, "Shampoo", 90.00);
         Product p12 = new Product(null, "produto12", 10.00);
-        Product p13 = new Product(null, "produto12", 10.00);
-        Product p14 = new Product(null, "produto12", 10.00);
-        Product p15 = new Product(null, "produto12", 10.00);
-        Product p16 = new Product(null, "produto12", 10.00);
-        Product p17 = new Product(null, "produto12", 10.00);
-        Product p18 = new Product(null, "produto12", 10.00);
-        Product p19 = new Product(null, "produto12", 10.00);
-        Product p20 = new Product(null, "produto12", 10.00);
-        Product p21 = new Product(null, "produto12", 10.00);
-        Product p22 = new Product(null, "produto12", 10.00);
-        Product p23 = new Product(null, "produto12", 10.00);
-        Product p24 = new Product(null, "produto12", 10.00);
-        Product p25 = new Product(null, "produto12", 10.00);
-        Product p26 = new Product(null, "produto12", 10.00);
-        Product p27 = new Product(null, "produto12", 10.00);
-        Product p28 = new Product(null, "produto12", 10.00);
-        Product p29 = new Product(null, "produto12", 10.00);
-        Product p30 = new Product(null, "produto12", 10.00);
-        Product p31 = new Product(null, "produto12", 10.00);
-        Product p32 = new Product(null, "produto12", 10.00);
-        Product p33 = new Product(null, "produto12", 10.00);
-        Product p34 = new Product(null, "produto12", 10.00);
-        Product p35 = new Product(null, "produto12", 10.00);
-        Product p36 = new Product(null, "produto12", 10.00);
-        Product p37 = new Product(null, "produto12", 10.00);
-        Product p38 = new Product(null, "produto12", 10.00);
-        Product p39 = new Product(null, "produto12", 10.00);
-        Product p40 = new Product(null, "produto12", 10.00);
-        Product p41 = new Product(null, "produto12", 10.00);
-        Product p42 = new Product(null, "produto12", 10.00);
-        Product p43 = new Product(null, "produto12", 10.00);
-        Product p44 = new Product(null, "produto12", 10.00);
-        Product p45 = new Product(null, "produto12", 10.00);
-        Product p46 = new Product(null, "produto12", 10.00);
-        Product p47 = new Product(null, "produto12", 10.00);
-        Product p48 = new Product(null, "produto12", 10.00);
-        Product p49 = new Product(null, "produto12", 10.00);
-        Product p50 = new Product(null, "produto12", 10.00);
+        Product p13 = new Product(null, "produto13", 10.00);
+        Product p14 = new Product(null, "produto14", 10.00);
+        Product p15 = new Product(null, "produto15", 10.00);
+        Product p16 = new Product(null, "produto16", 10.00);
+        Product p17 = new Product(null, "produto17", 10.00);
+        Product p18 = new Product(null, "produto18", 10.00);
+        Product p19 = new Product(null, "produto19", 10.00);
+        Product p20 = new Product(null, "produto20", 10.00);
+        Product p21 = new Product(null, "produto21", 10.00);
+        Product p22 = new Product(null, "produto22", 10.00);
+        Product p23 = new Product(null, "produto23", 10.00);
+        Product p24 = new Product(null, "produto24", 10.00);
+        Product p25 = new Product(null, "produto25", 10.00);
+        Product p26 = new Product(null, "produto26", 10.00);
+        Product p27 = new Product(null, "produto27", 10.00);
+        Product p28 = new Product(null, "produto28", 10.00);
+        Product p29 = new Product(null, "produto29", 10.00);
+        Product p30 = new Product(null, "produto30", 10.00);
+        Product p31 = new Product(null, "produto31", 10.00);
+        Product p32 = new Product(null, "produto32", 10.00);
+        Product p33 = new Product(null, "produto33", 10.00);
+        Product p34 = new Product(null, "produto34", 10.00);
+        Product p35 = new Product(null, "produto35", 10.00);
+        Product p36 = new Product(null, "produto36", 10.00);
+        Product p37 = new Product(null, "produto37", 10.00);
+        Product p38 = new Product(null, "produto38", 10.00);
+        Product p39 = new Product(null, "produto39", 10.00);
+        Product p40 = new Product(null, "produto40", 10.00);
+        Product p41 = new Product(null, "produto41", 10.00);
+        Product p42 = new Product(null, "produto42", 10.00);
+        Product p43 = new Product(null, "produto43", 10.00);
+        Product p44 = new Product(null, "produto44", 10.00);
+        Product p45 = new Product(null, "produto45", 10.00);
+        Product p46 = new Product(null, "produto46", 10.00);
+        Product p47 = new Product(null, "produto47", 10.00);
+        Product p48 = new Product(null, "produto48", 10.00);
+        Product p49 = new Product(null, "produto49", 10.00);
+        Product p50 = new Product(null, "produto50", 10.00);
 
 
         cat1.getProducts().addAll(Arrays.asList(p1, p2, p3, p12, p13, p14, p15, p16, p17,
@@ -160,7 +160,7 @@ public class DBService {
         p50.getCategories().addAll(Arrays.asList(cat1));
 
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
-        productRepository.saveAll(Arrays.asList(p1, p2, p3, p12, p13, p14, p15, p16, p17,
+        productRepository.saveAll(Arrays.asList(p1, p2, p3,p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17,
                 p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37,
                 p38, p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50));
 
