@@ -23,6 +23,10 @@ public class ProductService {
     @Autowired
     private CategoryRepository catRepo;
 
+    public List<Product> findAll() {
+        return repo.findAll();
+    }
+
     public Product find(Integer id) {
         Optional<Product> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(

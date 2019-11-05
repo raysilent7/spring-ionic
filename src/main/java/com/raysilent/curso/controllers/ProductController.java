@@ -18,14 +18,20 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    @GetMapping
+    public ResponseEntity<List<Product>> findAll() {
+        List<Product> list = service.findAll();
+        return ResponseEntity.ok().body(list);
+    }
+
     @GetMapping(value="/{id}")
-    public ResponseEntity<Product> searchById(@PathVariable Integer id) {
+    public ResponseEntity<Product> findById(@PathVariable Integer id) {
         Product obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping
-    public ResponseEntity<Page<ProductDTO>> searchPage(
+    @GetMapping(value="/categories")
+    public ResponseEntity<Page<ProductDTO>> findPage(
             @RequestParam(value="name", defaultValue="") String name,
             @RequestParam(value="categories", defaultValue="") String categories,
             @RequestParam(value="page", defaultValue="0") Integer page,
